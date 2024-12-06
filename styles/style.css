@@ -1,0 +1,218 @@
+/* makes sizing simpler */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* remove default spacing */
+/* force styling of type through styling, rather than elements */
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+/* dark mode user-agent-styles */
+
+html {
+    color-scheme: dark light;
+}
+
+/* min body height */
+
+body {
+    min-height: 100vh;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Deklarera CSS-variabler i :root */
+:root {
+    --primary-color: #fff;
+    --primary-background-color: #587291;;
+    --button-color: #5B2E48;
+    --nav-color:  #F8F8F8;;
+    --font-size-base-min: 0.5rem;
+    --font-size-base-max: 2rem;
+    --font-family: 'Roboto', sans-serif;
+    --font-size-base: 1rem;
+}
+
+body {
+    font-size: clamp(var(--font-size-base-min), var(--font-size-base), var(--font-size-base-max));
+    font-family: var(--font-family);
+    line-height: 1.5rem;
+    min-height: 90vh;
+    display:grid;
+    grid-template-rows: 140vh 70vh 5vh;
+}
+
+header{
+
+    /* Första raden: bakgrund, andra raden: navbar */
+    /* Full höjd av viewport */
+    height: 145vh;
+    width:100%;
+    /* Gör bilden responsiv */
+    background-image: url('../images/getcoding.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+
+nav{
+    width:97%;
+}
+
+.navbar{
+    /* grid-row: 1 / 2; */
+    display: flex;
+    /* Vertikal centrering */
+    align-items: center;
+    /* Horisontell centrering */
+    justify-content: center;
+    /* Navbar-höjd är 10% av visningshöjden */
+    height: 10vh;
+    background-color: var(--nav-color);
+    padding: 2vh;
+    margin-top: 9%;
+}
+
+
+.navbar ul {
+    display: flex;
+    /* Tre lika breda kolumner */
+    grid-template-columns: repeat(3, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-footer {
+    width: 100%;
+    height: 85px;
+    margin: 0 0 0 24px;
+    background-color: var(--nav-color);
+    display: flex;
+    justify-content: flex-end;
+    /* Horisontell centrering */
+    align-items: center;
+    /* Vertikal centrering */
+    gap: 5px;
+}
+.navbar-footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    /* Centrera listan horisontellt */
+}
+
+.navbar-footer li {
+    margin: 0 25px;
+}
+
+.navbar-footer a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    font-size: 2rem;
+    text-align: center;
+    color: var(--primary-color)
+}
+
+.btn {
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--primary-color);
+    background-color: var(--button-color);
+    transition: background-color 2,5s;
+}
+
+.btn:hover{
+    background-color: #6f588b;
+
+}
+
+.btn:hover {
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5);
+    border: 2px solid gray;
+    /* Starkare skugga vid hover */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    height: 70vh;
+    border: 1px solid #ccc;
+    background-color: var(--primary-background-color);
+    gap: 10px;
+}
+
+
+@media (max-width: 768px) {
+    p {
+        font-size: 1.2rem;
+        /* Mindre skärmar */
+    }
+    .btn {
+        height: 47px;
+        width: 150px;
+        margin-top: 12px;
+        padding: 0 10px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    p {
+        font-size: 2rem;
+        /* Större skärmar */
+    }
+    .btn {
+        height: 67px;
+        width: 216px;
+        margin-top: 22px;
+        padding: 0 25px;
+        font-size: 1.9rem;
+    }
+}
